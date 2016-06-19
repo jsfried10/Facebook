@@ -84,8 +84,6 @@ class NewsFeedViewController: UIViewController {
         
         
         
-        
-        
     }
     
     @IBAction func didTapPhoto(sender: UITapGestureRecognizer) {

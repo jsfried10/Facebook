@@ -12,8 +12,15 @@ class ImageTransition: BaseTransition {
     
     override func presentTransition(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
         
-        let newsfeedViewController = fromViewController as! NewsFeedViewController
+        let tabViewController = fromViewController as! UITabBarController
+        let navigationController = tabViewController.selectedViewController as! UINavigationController
+        let newsfeedViewController = navigationController.topViewController as! NewsFeedViewController
         let mediaViewController = toViewController as! MediaViewController
+        
+        
+        
+//        let newsfeedViewController = fromViewController as! NewsFeedViewController
+//        let mediaViewController = toViewController as! MediaViewController
         
         let movingImageView = UIImageView()
         movingImageView.frame = containerView.convertRect(newsfeedViewController.selectedImageView.frame, fromView: newsfeedViewController.selectedImageView.superview)
@@ -42,11 +49,16 @@ class ImageTransition: BaseTransition {
     
     override func dismissTransition(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
         
-        let newsfeedViewController = toViewController as! NewsFeedViewController
+        let tabViewController = toViewController as! UITabBarController
+        let navigationController = tabViewController.selectedViewController as! UINavigationController
+        let newsfeedViewController = navigationController.topViewController as! NewsFeedViewController
         let mediaViewController = fromViewController as! MediaViewController
+
+//        let newsfeedViewController = toViewController as! NewsFeedViewController
+//        let mediaViewController = fromViewController as! MediaViewController
         
         let movingImageView = UIImageView()
-        movingImageView.frame = containerView.convertRect(mediaViewController.weddingImageView.frame, fromView: newsfeedViewController.selectedImageView.superview)
+        movingImageView.frame = containerView.convertRect(mediaViewController.weddingImageView.frame, fromView: mediaViewController.weddingImageView.superview)
         movingImageView.image = mediaViewController.weddingImageView.image
         movingImageView.contentMode = mediaViewController.weddingImageView.contentMode
         
