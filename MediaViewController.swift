@@ -58,6 +58,7 @@ class MediaViewController: UIViewController, UIScrollViewDelegate {
         if scrollView.contentOffset.y > 100 || scrollView.contentOffset.y < -100 {
             dismissViewControllerAnimated(true, completion: nil)
         }
+    
     }
     
     

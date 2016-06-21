@@ -23,6 +23,11 @@ class NewsFeedViewController: UIViewController {
     
     @IBOutlet weak var newsFeedImage: UIImageView!
     
+    @IBOutlet weak var weddingImage1: UIImageView!
+    @IBOutlet weak var weddingImage2: UIImageView!
+    @IBOutlet weak var weddingImage3: UIImageView!
+    @IBOutlet weak var weddingImage4: UIImageView!
+    @IBOutlet weak var weddingImage5: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,12 +57,22 @@ class NewsFeedViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         //activity indicator
         newsFeedImage.hidden = true
+        weddingImage1.hidden = true
+        weddingImage2.hidden = true
+        weddingImage3.hidden = true
+        weddingImage4.hidden = true
+        weddingImage5.hidden = true
         viewLoadingIndicator.startAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
         delay(0.2) {
             self.newsFeedImage.hidden = false
+            self.weddingImage1.hidden = false
+            self.weddingImage2.hidden = false
+            self.weddingImage3.hidden = false
+            self.weddingImage4.hidden = false
+            self.sweddingImage5.hidden = false
             self.viewLoadingIndicator.stopAnimating()
         }
     }

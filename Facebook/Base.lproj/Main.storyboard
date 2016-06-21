@@ -233,6 +233,11 @@
                         <outlet property="newsFeedScrollView" destination="bFI-HY-OMY" id="LoE-BL-weO"/>
                         <outlet property="ptrLoadingview" destination="jyI-AX-TN9" id="sXz-UY-GWS"/>
                         <outlet property="viewLoadingIndicator" destination="Ibn-U7-64a" id="dbH-hs-X5q"/>
+                        <outlet property="weddingImage1" destination="XIu-WJ-j02" id="hzH-9F-2yW"/>
+                        <outlet property="weddingImage2" destination="dUb-MN-HVs" id="EHB-ON-ezh"/>
+                        <outlet property="weddingImage3" destination="GQ8-xO-U7Y" id="i9v-x6-Qyw"/>
+                        <outlet property="weddingImage4" destination="Sy4-5H-ASD" id="bVk-Bh-kbO"/>
+                        <outlet property="weddingImage5" destination="pTW-ta-s4w" id="ASY-c4-cM0"/>
                         <segue destination="fo7-bt-lIr" kind="modal" identifier="mediaSegue" id="N2f-6x-klt"/>
                     </connections>
                 </viewController>

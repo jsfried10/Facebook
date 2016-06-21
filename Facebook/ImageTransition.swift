@@ -17,10 +17,7 @@ class ImageTransition: BaseTransition {
         let newsfeedViewController = navigationController.topViewController as! NewsFeedViewController
         let mediaViewController = toViewController as! MediaViewController
         
-        
-        
-//        let newsfeedViewController = fromViewController as! NewsFeedViewController
-//        let mediaViewController = toViewController as! MediaViewController
+    
         
         let movingImageView = UIImageView()
         movingImageView.frame = containerView.convertRect(newsfeedViewController.selectedImageView.frame, fromView: newsfeedViewController.selectedImageView.superview)
@@ -36,7 +33,17 @@ class ImageTransition: BaseTransition {
         
         UIView.animateWithDuration(duration, animations: {
             toViewController.view.alpha = 1
-            movingImageView.frame = mediaViewController.weddingImageView.frame
+            
+            //calc aspect ratio of selected image
+            let aspectRatio = movingImageView.image!.size.width / movingImageView.image!.size.height
+            
+            
+            //respect width of image transitioning to and set the height to preserve the aspect ratio
+            movingImageView.frame.size.width = mediaViewController.weddingImageView.frame.size.width
+            movingImageView.frame.size.height = movingImageView.frame.size.width / aspectRatio
+            
+            //line up center of the image views to match
+            movingImageView.center = mediaViewController.weddingImageView.center
             
         }) { (finished: Bool) -> Void in
             newsfeedViewController.selectedImageView.hidden = true
@@ -54,13 +61,20 @@ class ImageTransition: BaseTransition {
         let newsfeedViewController = navigationController.topViewController as! NewsFeedViewController
         let mediaViewController = fromViewController as! MediaViewController
 
-//        let newsfeedViewController = toViewController as! NewsFeedViewController
-//        let mediaViewController = fromViewController as! MediaViewController
         
         let movingImageView = UIImageView()
-        movingImageView.frame = containerView.convertRect(mediaViewController.weddingImageView.frame, fromView: mediaViewController.weddingImageView.superview)
+//        movingImageView.frame = containerView.convertRect(mediaViewController.weddingImageView.frame, fromView: mediaViewController.weddingImageView.superview)
+
         movingImageView.image = mediaViewController.weddingImageView.image
-        movingImageView.contentMode = mediaViewController.weddingImageView.contentMode
+        movingImageView.contentMode = newsfeedViewController.selectedImageView.contentMode
+        
+//        calculate aspect ratio of the selected image
+        let aspectRatio = movingImageView.image!.size.width / movingImageView.image!.size.height
+        
+        movingImageView.frame.size.width = mediaViewController.weddingImageView.frame.size.width
+        movingImageView.frame.size.height = movingImageView.frame.size.width / aspectRatio
+        
+        movingImageView.center = mediaViewController.weddingImageView.center
         
         mediaViewController.weddingImageView.hidden = true
         newsfeedViewController.selectedImageView.hidden = true
@@ -70,8 +84,8 @@ class ImageTransition: BaseTransition {
         
         UIView.animateWithDuration(duration, animations: {
             fromViewController.view.alpha = 0
-            movingImageView.frame = newsfeedViewController.selectedImageView.frame
-
+            movingImageView.frame = containerView.convertRect(newsfeedViewController.selectedImageView.frame, fromView: newsfeedViewController.selectedImageView.superview)
+            
         }) { (finished: Bool) -> Void in
             newsfeedViewController.selectedImageView.hidden = false
 //            mediaViewController.weddingImageView.hidden = true
