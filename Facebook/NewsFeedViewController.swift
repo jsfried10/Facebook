@@ -72,7 +72,7 @@ class NewsFeedViewController: UIViewController {
             self.weddingImage2.hidden = false
             self.weddingImage3.hidden = false
             self.weddingImage4.hidden = false
-            self.sweddingImage5.hidden = false
+            self.weddingImage5.hidden = false
             self.viewLoadingIndicator.stopAnimating()
         }
     }
